@@ -13,7 +13,6 @@ export default function ContactMe() {
   return (
     <div
       style={{
-        marginLeft: "30px",
         padding: "20px", // Add padding for better spacing
       }}>
       <div style={{ marginLeft: "20px" }}>
