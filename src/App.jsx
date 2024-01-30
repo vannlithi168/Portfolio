@@ -1,5 +1,7 @@
 import "./App.css";
 import AboutMe from "./components/AboutMe";
+import ContactMe from "./components/ContactMe";
+import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import NavBar from "./components/NavBar";
 import Portfolio from "./components/Portfoilio";
@@ -13,6 +15,8 @@ function App() {
       <TechStack />
       <AboutMe />
       <Portfolio />
+      <ContactMe />
+      <Footer />
     </>
   );
 }
