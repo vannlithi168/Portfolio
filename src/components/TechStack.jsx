@@ -82,6 +82,8 @@ export default function TechStack() {
           overflowX: "auto",
           whiteSpace: "nowrap",
           textAlign: "center",
+          scrollbarWidth: "none", // Hide scrollbar for a cleaner look
+          msOverflowStyle: "none", // Hide scrollbar for IE and Edge
         }}
         onWheel={handleWheel}
         onTouchStart={(e) => handleTouchStart(e)}
@@ -99,6 +101,9 @@ export default function TechStack() {
             bgcolor: "#F8F8F8",
             overflow: "hidden",
             transition: "all 0.5s ease-in-out",
+            flexWrap: "nowrap", // Prevent card items from wrapping on smaller screens
+            minWidth: "120%", // Set a fixed width larger than the screen size
+            padding: "10px", // Adjust padding for a better display
           }}>
           {images.map((image, index) => (
             <CardMedia
