@@ -2,6 +2,7 @@ import { useRef } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import { keyframes } from "@emotion/react";
+import smoothScrollIntoViewIfNeeded from "smooth-scroll-into-view-if-needed";
 
 const scaleInAnimation = keyframes`
   0% {
@@ -56,6 +57,15 @@ export default function TechStack() {
     handleScroll(deltaY);
   };
 
+  const scrollTo = (element) => {
+    smoothScrollIntoViewIfNeeded(element, {
+      behavior: "smooth",
+      scrollMode: "if-needed",
+      block: "nearest",
+      inline: "nearest",
+    });
+  };
+
   return (
     <div style={{ backgroundColor: "#F8F8F8", paddingBottom: "20px" }}>
       <h1
@@ -75,7 +85,8 @@ export default function TechStack() {
         }}
         onWheel={handleWheel}
         onTouchStart={(e) => handleTouchStart(e)}
-        onTouchMove={(e) => handleTouchMove(e)}>
+        onTouchMove={(e) => handleTouchMove(e)}
+        onClick={(e) => scrollTo(cardRef.current)}>
         <Card
           ref={cardRef}
           sx={{
