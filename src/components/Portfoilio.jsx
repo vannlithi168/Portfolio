@@ -28,6 +28,7 @@ export default function Portfolio() {
         }}>
         PORTFOLIO
       </Typography>
+
       <Card
         sx={{
           display: "flex",
@@ -158,7 +159,11 @@ export default function Portfolio() {
                   marginRight: "0",
                   fontWeight: 700,
                   width: "100%",
-                }}>
+                }}
+                component="a" // Use anchor tag as the component
+                href="https://www.example.com" // Replace with the actual URL
+                target="_blank" // Open in a new tab
+                rel="noopener noreferrer">
                 Code
               </Button>
               <Button
@@ -167,7 +172,11 @@ export default function Portfolio() {
                 sx={{
                   fontWeight: 700,
                   width: "100%",
-                }}>
+                }}
+                component="a" // Use anchor tag as the component
+                href="https://weather-project-swart.vercel.app/" // Replace with the actual URL
+                target="_blank" // Open in a new tab
+                rel="noopener noreferrer">
                 Demo
               </Button>
             </CardActions>
