@@ -1,8 +1,6 @@
-import { useRef } from "react";
+import { keyframes } from "@emotion/react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import { keyframes } from "@emotion/react";
-import smoothScrollIntoViewIfNeeded from "smooth-scroll-into-view-if-needed";
 
 const scaleInAnimation = keyframes`
   0% {
@@ -32,40 +30,6 @@ export default function TechStack() {
     "/img/python.png",
   ];
 
-  const cardRef = useRef(null);
-  const startY = useRef(null);
-
-  const handleScroll = (deltaY) => {
-    const card = cardRef.current;
-    const scrollAmount = 200;
-    card.scrollLeft += deltaY > 0 ? scrollAmount : -scrollAmount;
-  };
-
-  const handleWheel = (e) => {
-    handleScroll(e.deltaY);
-  };
-
-  const handleTouchStart = (e) => {
-    // Store initial touch position
-    startY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchMove = (e) => {
-    // Calculate and handle the scroll distance based on touch movement
-    const deltaY = startY.current - e.touches[0].clientY;
-    startY.current = e.touches[0].clientY;
-    handleScroll(deltaY);
-  };
-
-  const scrollTo = (element) => {
-    smoothScrollIntoViewIfNeeded(element, {
-      behavior: "smooth",
-      scrollMode: "if-needed",
-      block: "nearest",
-      inline: "nearest",
-    });
-  };
-
   return (
     <div style={{ backgroundColor: "#F8F8F8", paddingBottom: "20px" }}>
       <h1
@@ -80,17 +44,10 @@ export default function TechStack() {
       <div
         style={{
           overflowX: "auto",
-          whiteSpace: "nowrap",
+          whiteSpace: "unset", // Allow wrapping of images on smaller screens
           textAlign: "center",
-          scrollbarWidth: "none", // Hide scrollbar for a cleaner look
-          msOverflowStyle: "none", // Hide scrollbar for IE and Edge
-        }}
-        onWheel={handleWheel}
-        onTouchStart={(e) => handleTouchStart(e)}
-        onTouchMove={(e) => handleTouchMove(e)}
-        onClick={(e) => scrollTo(cardRef.current)}>
+        }}>
         <Card
-          ref={cardRef}
           sx={{
             display: "flex",
             gap: "20px",
@@ -101,9 +58,7 @@ export default function TechStack() {
             bgcolor: "#F8F8F8",
             overflow: "hidden",
             transition: "all 0.5s ease-in-out",
-            flexWrap: "nowrap", // Prevent card items from wrapping on smaller screens
-            minWidth: "120%", // Set a fixed width larger than the screen size
-            padding: "10px", // Adjust padding for a better display
+            flexWrap: "wrap", // Allow items to wrap on smaller screens
           }}>
           {images.map((image, index) => (
             <CardMedia
