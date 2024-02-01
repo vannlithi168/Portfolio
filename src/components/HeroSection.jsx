@@ -22,6 +22,25 @@ const morphAnimation = keyframes`
 `;
 
 export default function HeroSection() {
+  const handleDownload = () => {
+    // Replace "your-cv-file.pdf" with the actual filename of your CV
+    const cvFileName = "Vannlithi-resume.pdf";
+
+    // Create an anchor element
+    const link = document.createElement("a");
+    link.href = `../${cvFileName}`;
+
+    // Set the download attribute with the filename
+    link.download = cvFileName;
+
+    // Append the anchor to the document and trigger the click event
+    document.body.appendChild(link);
+    link.click();
+
+    // Remove the anchor from the document
+    document.body.removeChild(link);
+  };
+
   return (
     <Card
       sx={{
@@ -93,7 +112,8 @@ export default function HeroSection() {
                   marginTop: "30px",
                   bgcolor: "#0094FF",
                   fontWeight: 500,
-                }}>
+                }}
+                onClick={handleDownload}>
                 Download CV
               </Button>
             </CardContent>
@@ -107,7 +127,7 @@ export default function HeroSection() {
                 marginLeft: { xs: "auto", md: "50px" },
                 marginRight: { xs: "auto", md: "auto" },
                 marginBottom: "20px",
-                backgroundImage: "url(/img/2.png)",
+                backgroundImage: "url(/img/me.jpg)",
                 backgroundPosition: "50%",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",

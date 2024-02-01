@@ -32,11 +32,28 @@ export default function TechStack() {
   ];
 
   const cardRef = useRef(null);
+  const startY = useRef(null);
 
-  const handleWheel = (e) => {
+  const handleScroll = (deltaY) => {
     const card = cardRef.current;
     const scrollAmount = 200;
-    card.scrollLeft += e.deltaY > 0 ? scrollAmount : -scrollAmount;
+    card.scrollLeft += deltaY > 0 ? scrollAmount : -scrollAmount;
+  };
+
+  const handleWheel = (e) => {
+    handleScroll(e.deltaY);
+  };
+
+  const handleTouchStart = (e) => {
+    // Store initial touch position
+    startY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    // Calculate and handle the scroll distance based on touch movement
+    const deltaY = startY.current - e.touches[0].clientY;
+    startY.current = e.touches[0].clientY;
+    handleScroll(deltaY);
   };
 
   return (
@@ -52,11 +69,13 @@ export default function TechStack() {
       </h1>
       <div
         style={{
-          overflowX: "hidden",
-          display: "flex",
-          justifyContent: "center",
+          overflowX: "auto",
+          whiteSpace: "nowrap",
+          textAlign: "center",
         }}
-        onWheel={handleWheel}>
+        onWheel={handleWheel}
+        onTouchStart={(e) => handleTouchStart(e)}
+        onTouchMove={(e) => handleTouchMove(e)}>
         <Card
           ref={cardRef}
           sx={{

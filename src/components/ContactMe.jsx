@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -10,6 +11,41 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function ContactMe() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSendClick = async () => {
+    // Formspree form endpoint
+    const formEndpoint = "https://formspree.io/f/xbjngjyj";
+
+    // Prepare data for form submission
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("message", message);
+
+    // Send form data to Formspree
+    try {
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        console.log("Form submission successful!");
+        // Optionally, you can reset the form fields after successful submission
+        setEmail("");
+        setMessage("");
+      } else {
+        console.error("Form submission failed:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <div
       style={{
@@ -62,7 +98,7 @@ export default function ContactMe() {
       <Card
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" }, // Use column layout on small screens, row layout on medium and larger screens
+          flexDirection: { xs: "column", md: "row" },
           width: "100%",
           marginTop: "20px",
           border: "none",
@@ -73,20 +109,16 @@ export default function ContactMe() {
             display: "flex",
             flexDirection: "column",
             flex: "1 0 auto",
-            marginRight: { xs: 0, md: "20px" }, // Add margin on larger screens
+            marginRight: { xs: 0, md: "20px" },
           }}>
           <CardContent>
-            <Typography
-              component="div"
-              variant="h5"
-              sx={{ fontWeight: "bold", color: "#0094FF" }}>
-              Send Me a Message
-            </Typography>
             <TextField
               label="Email"
               variant="outlined"
               margin="normal"
               fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               label="Message"
@@ -95,13 +127,16 @@ export default function ContactMe() {
               fullWidth
               multiline
               rows={4}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
 
             {/* "Send Me" Button */}
             <Button
               variant="contained"
               color="primary"
-              sx={{ marginTop: "10px" }}>
+              sx={{ marginTop: "10px" }}
+              onClick={handleSendClick}>
               Send Me
             </Button>
           </CardContent>
@@ -109,10 +144,10 @@ export default function ContactMe() {
         <CardMedia
           component="img"
           sx={{
-            width: { xs: "100%", md: "50%" }, // Full width on small screens, 50% width on medium and larger screens
+            width: { xs: "100%", md: "50%" },
             height: "auto",
-            marginTop: { xs: "-20px", md: "-80px" }, // Adjusted margin on small screens
-            marginLeft: { xs: 0, md: "20px" }, // Add margin on larger screens
+            marginTop: { xs: "-20px", md: "-80px" },
+            marginLeft: { xs: 0, md: "20px" },
           }}
           image="/img/contactme.gif"
           alt="Live from space album cover"
