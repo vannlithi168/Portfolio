@@ -123,7 +123,7 @@ export default function HeroSection() {
             <CardMedia
               component="div"
               sx={{
-                marginTop: { xs: "30px", md: 0 },
+                marginTop: { xs: "0px", md: 0 },
                 marginLeft: { xs: "auto", md: "50px" },
                 marginRight: { xs: "auto", md: "auto" },
                 marginBottom: "20px",

@@ -60,7 +60,7 @@ function NavBar(props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}>
-            <MenuIcon />
+            <MenuIcon sx={{ color: "black" }} />
           </IconButton>
           <Typography
             variant="h6"
