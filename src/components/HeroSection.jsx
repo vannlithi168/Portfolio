@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { keyframes } from "@emotion/react";
+import IconButton from "@mui/material/IconButton";
 
 const morphAnimation = keyframes`
   0% {
@@ -22,23 +23,28 @@ const morphAnimation = keyframes`
 `;
 
 export default function HeroSection() {
-  const handleDownload = () => {
-    // Replace "your-cv-file.pdf" with the actual filename of your CV
+  const handleDownload = async () => {
     const cvFileName = "Vannlithi-resume.pdf";
 
-    // Create an anchor element
-    const link = document.createElement("a");
-    link.href = `../${cvFileName}`;
+    try {
+      // Use import.meta.env.BASE_URL for the base URL in Vite
+      const response = await fetch(`${import.meta.env.BASE_URL}${cvFileName}`);
+      const blob = await response.blob();
 
-    // Set the download attribute with the filename
-    link.download = cvFileName;
+      const blobURL = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
 
-    // Append the anchor to the document and trigger the click event
-    document.body.appendChild(link);
-    link.click();
+      link.href = blobURL;
+      link.download = cvFileName;
 
-    // Remove the anchor from the document
-    document.body.removeChild(link);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(blobURL);
+    } catch (error) {
+      console.error("Error downloading file:", error);
+    }
   };
 
   return (
@@ -78,7 +84,7 @@ export default function HeroSection() {
                 variant="h2"
                 sx={{
                   fontWeight: "800",
-                  fontSize: "3.5rem",
+                  fontSize: { xs: "2.5rem", md: "3.5rem" }, // Adjusted font size for small screens
                   lineHeight: "1.2",
                 }}>
                 Front-End React Developer
@@ -102,8 +108,20 @@ export default function HeroSection() {
                   gap: "20px",
                   justifyContent: "center",
                 }}>
-                <GitHubIcon />
-                <LinkedInIcon />
+                <IconButton
+                  color="inherit"
+                  href="https://github.com/vannlithi168"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton
+                  color="inherit"
+                  href="https://www.linkedin.com/in/kim-vannlithi-2231b3294"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <LinkedInIcon />
+                </IconButton>
               </div>
               <Button
                 variant="contained"
@@ -123,7 +141,7 @@ export default function HeroSection() {
             <CardMedia
               component="div"
               sx={{
-                marginTop: { xs: "30px", md: 0 },
+                marginTop: { xs: "0px", md: 0 },
                 marginLeft: { xs: "auto", md: "50px" },
                 marginRight: { xs: "auto", md: "auto" },
                 marginBottom: "20px",
@@ -135,8 +153,8 @@ export default function HeroSection() {
                 borderRadius: "60% 40% 30% 70%/60% 30% 70% 40%",
                 position: "relative",
                 transition: "all 1s ease-in-out",
-                height: "25rem",
-                width: "25rem",
+                height: { xs: "15rem", md: "25rem" }, // Adjusted height for small screens
+                width: { xs: "15rem", md: "25rem" }, // Adjusted width for small screens
                 maxWidth: "100%", // Ensure image stays centered on small screens
                 animation: `${morphAnimation} 8s ease-in-out infinite`,
               }}

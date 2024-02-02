@@ -7,13 +7,11 @@ import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Link as ScrollLink, Element } from "react-scroll";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Projects", "Contact"];
@@ -34,11 +32,18 @@ function NavBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+          <li key={item}>
+            {/* Add offset prop to Link */}
+            <ScrollLink
+              to={item.toLowerCase()}
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-87} // Adjust the offset based on your navbar height
+              onClick={handleDrawerToggle}>
+              {item}
+            </ScrollLink>
+          </li>
         ))}
       </List>
     </Box>
@@ -60,7 +65,7 @@ function NavBar(props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}>
-            <MenuIcon />
+            <MenuIcon sx={{ color: "black" }} />
           </IconButton>
           <Typography
             variant="h6"
@@ -78,11 +83,19 @@ function NavBar(props) {
           <Box
             sx={{ display: { xs: "none", sm: "block" }, marginRight: "30px" }}>
             {navItems.map((item) => (
-              <Button
+              <ScrollLink
                 key={item}
-                sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}>
-                {item}
-              </Button>
+                to={item.toLowerCase()}
+                spy={true}
+                smooth={true}
+                duration={500}
+                offset={-90} // Adjust the offset based on your navbar height
+              >
+                <Button
+                  sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}>
+                  {item}
+                </Button>
+              </ScrollLink>
             ))}
           </Box>
         </Toolbar>
