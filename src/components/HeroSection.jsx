@@ -54,7 +54,7 @@ export default function HeroSection() {
         alignContent: "center",
         width: "100%",
         bgcolor: "#F8F8F8",
-        marginTop: "90px",
+        marginTop: { xs: "60px", sm: "40px", md: "90px" },
         paddingTop: "70px",
         paddingBottom: "50px",
         border: "none",
