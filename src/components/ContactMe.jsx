@@ -9,8 +9,9 @@ import Button from "@mui/material/Button";
 import EmailIcon from "@mui/icons-material/Email";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { Element, scroller } from "react-scroll";
 
-export default function ContactMe() {
+export default function ContactMe({ id }) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -35,9 +36,16 @@ export default function ContactMe() {
 
       if (response.ok) {
         console.log("Form submission successful!");
-        // Optionally, you can reset the form fields after successful submission
+
+        // Reset the form fields after successful submission
         setEmail("");
         setMessage("");
+
+        // Scroll to the next section (e.g., "footer") after successful form submission
+        scroller.scrollTo("footer", {
+          smooth: true,
+          duration: 500,
+        });
       } else {
         console.error("Form submission failed:", response.statusText);
       }
@@ -47,112 +55,115 @@ export default function ContactMe() {
   };
 
   return (
-    <div
-      style={{
-        padding: "20px", // Add padding for better spacing
-      }}>
-      <div style={{ marginLeft: "20px" }}>
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: "bold",
-            color: "#0094FF",
-            marginTop: "10px",
-            marginBottom: "30px",
-          }}>
-          Contact Me
-        </Typography>
-        <Typography
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            fontSize: "20px",
-            fontWeight: "bold",
-          }}>
-          <EmailIcon /> Email: vannlithi@gmail.com
-        </Typography>
-        <Typography
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            fontSize: "20px",
-            fontWeight: "bold",
-            margin: "20px 0",
-          }}>
-          <TelegramIcon /> Telegram: 092988821
-        </Typography>
-        <Typography
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            fontSize: "20px",
-            fontWeight: "bold",
-          }}>
-          <LinkedInIcon /> Linkedin: www.linkedin.com/in/kim-vannlithi-2231b3294
-        </Typography>
-      </div>
-
-      <Card
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          width: "100%",
-          marginTop: "20px",
-          border: "none",
-          boxShadow: "none",
+    <Element name={id} className="element">
+      <div
+        style={{
+          padding: "20px", // Add padding for better spacing
         }}>
-        <Box
+        <div style={{ marginLeft: "20px" }}>
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: "bold",
+              color: "#0094FF",
+              marginTop: "10px",
+              marginBottom: "30px",
+            }}>
+            Contact Me
+          </Typography>
+          <Typography
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              fontSize: "20px",
+              fontWeight: "bold",
+            }}>
+            <EmailIcon /> Email: vannlithi@gmail.com
+          </Typography>
+          <Typography
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              fontSize: "20px",
+              fontWeight: "bold",
+              margin: "20px 0",
+            }}>
+            <TelegramIcon /> Telegram: 092988821
+          </Typography>
+          <Typography
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              fontSize: "20px",
+              fontWeight: "bold",
+            }}>
+            <LinkedInIcon /> Linkedin:
+            www.linkedin.com/in/kim-vannlithi-2231b3294
+          </Typography>
+        </div>
+
+        <Card
           sx={{
             display: "flex",
-            flexDirection: "column",
-            flex: "1 0 auto",
-            marginRight: { xs: 0, md: "20px" },
+            flexDirection: { xs: "column", md: "row" },
+            width: "100%",
+            marginTop: "20px",
+            border: "none",
+            boxShadow: "none",
           }}>
-          <CardContent>
-            <TextField
-              label="Email"
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              label="Message"
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              multiline
-              rows={4}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              flex: "1 0 auto",
+              marginRight: { xs: 0, md: "20px" },
+            }}>
+            <CardContent>
+              <TextField
+                label="Email"
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextField
+                label="Message"
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                multiline
+                rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
 
-            {/* "Send Me" Button */}
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ marginTop: "10px" }}
-              onClick={handleSendClick}>
-              Send Me
-            </Button>
-          </CardContent>
-        </Box>
-        <CardMedia
-          component="img"
-          sx={{
-            width: { xs: "100%", md: "50%" },
-            height: "auto",
-            marginTop: { xs: "-20px", md: "-80px" },
-            marginLeft: { xs: 0, md: "20px" },
-          }}
-          image="/img/contactme.gif"
-          alt="Live from space album cover"
-        />
-      </Card>
-    </div>
+              {/* "Send Me" Button */}
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ marginTop: "10px" }}
+                onClick={handleSendClick}>
+                Send Me
+              </Button>
+            </CardContent>
+          </Box>
+          <CardMedia
+            component="img"
+            sx={{
+              width: { xs: "100%", md: "50%" },
+              height: "auto",
+              marginTop: { xs: "-20px", md: "-80px" },
+              marginLeft: { xs: 0, md: "20px" },
+            }}
+            image="/img/contactme.gif"
+            alt="Live from space album cover"
+          />
+        </Card>
+      </div>
+    </Element>
   );
 }
