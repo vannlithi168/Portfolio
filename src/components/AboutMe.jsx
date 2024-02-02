@@ -5,13 +5,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Element } from "react-scroll";
 
-export default function AboutMe() {
+export default function AboutMe({ darkMode }) {
   return (
     <Element name="aboutMe" className="element">
       <Card
         sx={{
           display: "grid",
-          bgcolor: "#FFFFFF",
+          bgcolor: darkMode ? "#333" : "#FFFFFF",
           gridTemplateColumns: "1fr 1fr",
           alignItems: "center",
           justifyContent: "center",
@@ -21,7 +21,6 @@ export default function AboutMe() {
           margin: "60px 20px",
           border: "none",
           boxShadow: "none",
-          paddingTop: "20px",
         }}>
         <CardMedia
           component="img"

@@ -9,9 +9,12 @@ import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Link as ScrollLink, Element } from "react-scroll";
+import Brightness4Icon from "@mui/icons-material/Brightness4"; // Dark mode icon
+import { Link as ScrollLink } from "react-scroll";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
+import { useState } from "react";
+import { useDarkMode } from "../DarkModeContext";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Projects", "Contact"];
@@ -19,6 +22,7 @@ const navItems = ["Home", "About", "Projects", "Contact"];
 function NavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -28,7 +32,9 @@ function NavBar(props) {
     <Box
       onClick={handleDrawerToggle}
       sx={{ textAlign: "center", padding: "20px" }}>
-      <Typography variant="h6" sx={{ my: 2, fontWeight: "bold" }}>
+      <Typography
+        variant="h6"
+        sx={{ my: 2, fontWeight: "bold", color: darkMode ? "white" : "black" }}>
         k_vannlithi.dev
       </Typography>
       <Divider />
@@ -44,7 +50,7 @@ function NavBar(props) {
               onClick={handleDrawerToggle}>
               <Button
                 sx={{
-                  color: "black",
+                  color: darkMode ? "white" : "black",
                   fontWeight: "bold",
                   fontSize: "17px",
                   margin: "10px 0",
@@ -67,7 +73,7 @@ function NavBar(props) {
       <AppBar
         component="nav"
         sx={{
-          bgcolor: "#FFFFFF",
+          bgcolor: darkMode ? "#333" : "#FFFFFF",
           height: { xs: "60px", sm: "80px", md: "87px" },
           justifyContent: "center",
         }}>
@@ -78,7 +84,7 @@ function NavBar(props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}>
-            <MenuIcon sx={{ color: "black" }} />
+            <MenuIcon sx={{ color: darkMode ? "white" : "black" }} />
           </IconButton>
           <Typography
             variant="h6"
@@ -86,7 +92,7 @@ function NavBar(props) {
             sx={{
               flexGrow: 1,
               display: { xs: "none", sm: "block" },
-              color: "black",
+              color: darkMode ? "white" : "black",
               fontWeight: "bold",
               fontSize: "25px",
               marginLeft: "20px",
@@ -102,15 +108,25 @@ function NavBar(props) {
                 spy={true}
                 smooth={true}
                 duration={500}
-                offset={-90} // Adjust the offset based on your navbar height
-              >
+                offset={-90}>
                 <Button
-                  sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}>
+                  sx={{
+                    color: darkMode ? "white" : "black",
+                    fontWeight: "bold",
+                    fontSize: "17px",
+                  }}>
                   {item}
                 </Button>
               </ScrollLink>
             ))}
           </Box>
+          <IconButton
+            color="inherit"
+            aria-label="toggle dark mode"
+            onClick={toggleDarkMode}
+            sx={{ marginLeft: "auto", color: darkMode ? "white" : "black" }}>
+            <Brightness4Icon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav>
@@ -127,6 +143,7 @@ function NavBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              bgcolor: darkMode ? "#333" : "#FFFFFF",
             },
           }}>
           {drawer}
@@ -137,10 +154,6 @@ function NavBar(props) {
 }
 
 NavBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
