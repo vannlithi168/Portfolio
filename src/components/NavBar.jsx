@@ -25,23 +25,32 @@ function NavBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center", padding: "20px" }}>
+      <Typography variant="h6" sx={{ my: 2, fontWeight: "bold" }}>
         k_vannlithi.dev
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <li key={item}>
-            {/* Add offset prop to Link */}
             <ScrollLink
               to={item.toLowerCase()}
               spy={true}
               smooth={true}
               duration={500}
-              offset={-87} // Adjust the offset based on your navbar height
+              offset={-90}
               onClick={handleDrawerToggle}>
-              {item}
+              <Button
+                sx={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: "17px",
+                  margin: "10px 0",
+                }}>
+                {item}
+              </Button>
             </ScrollLink>
           </li>
         ))}
@@ -57,7 +66,11 @@ function NavBar(props) {
       <CssBaseline />
       <AppBar
         component="nav"
-        sx={{ bgcolor: "#FFFFFF", height: "87px", justifyContent: "center" }}>
+        sx={{
+          bgcolor: "#FFFFFF",
+          height: { xs: "60px", sm: "80px", md: "87px" },
+          justifyContent: "center",
+        }}>
         <Toolbar>
           <IconButton
             color="inherit"
