@@ -7,27 +7,28 @@ import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import { Element } from "react-scroll";
+import { useDarkMode } from "../DarkModeContext";
 
 export default function Portfolio() {
+  const { darkMode } = useDarkMode();
   return (
     <Element name="project">
       <div
         style={{
-          backgroundColor: "#F8F8F8",
+          backgroundColor: darkMode.background,
           border: "none",
           boxShadow: "none",
-          marginBottom: "50px",
+
           paddingBottom: "30px",
         }}>
         <Typography
           variant="h4"
           sx={{
             fontWeight: "bold",
-            color: "#0094FF",
+            color: darkMode.text,
             textAlign: "center",
-            marginTop: "10px",
-            marginBottom: "30px",
-            paddingTop: "30px",
+            marginBottom: "50px",
+            paddingTop: "50px",
           }}>
           PORTFOLIO
         </Typography>
@@ -39,7 +40,7 @@ export default function Portfolio() {
               xs: "column",
               sm: "row",
             },
-            bgcolor: "#FFFFFF",
+            bgcolor: darkMode.color,
             width: "90%",
             marginLeft: "auto",
             marginRight: "auto",
@@ -62,10 +63,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.background,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -76,10 +77,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.background,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -90,10 +91,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.background,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -104,10 +105,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.background,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -123,6 +124,7 @@ export default function Portfolio() {
                   marginLeft: "10px",
                   marginTop: "10px",
                   marginBottom: "10px",
+                  color: darkMode.text,
                 }}>
                 Authentication
               </Typography>
@@ -135,6 +137,7 @@ export default function Portfolio() {
                   marginTop: "10px",
                   marginBottom: "10px",
                   width: "100%",
+                  color: darkMode.text,
                 }}>
                 The Membership MERN project is a robust web application designed
                 for efficient management of membership-related activities. Built
@@ -199,7 +202,7 @@ export default function Portfolio() {
               xs: "column",
               sm: "row",
             },
-            bgcolor: "#FFFFFF",
+            bgcolor: darkMode.color,
             width: "90%",
             marginLeft: "auto",
             marginRight: "auto",
@@ -228,10 +231,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -242,10 +245,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -256,10 +259,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -275,6 +278,7 @@ export default function Portfolio() {
                   marginLeft: "10px",
                   marginTop: "10px",
                   marginBottom: "10px",
+                  color: darkMode.text,
                 }}>
                 Weather Web App
               </Typography>
@@ -287,6 +291,7 @@ export default function Portfolio() {
                   marginTop: "10px",
                   marginBottom: "10px",
                   width: "100%",
+                  color: darkMode.text,
                 }}>
                 <ul>
                   <li>
@@ -357,7 +362,7 @@ export default function Portfolio() {
               xs: "column",
               sm: "row",
             },
-            bgcolor: "#FFFFFF",
+            bgcolor: darkMode.color,
             width: "90%",
             marginLeft: "auto",
             marginRight: "auto",
@@ -380,10 +385,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -394,10 +399,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -408,10 +413,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -427,18 +432,19 @@ export default function Portfolio() {
                   marginLeft: "10px",
                   marginTop: "10px",
                   marginBottom: "10px",
+                  color: darkMode.text,
                 }}>
                 Todo List Web
               </Typography>
               <Typography
                 variant="subtitle1"
-                color="text.secondary"
                 component="div"
                 sx={{
                   marginLeft: "10px",
                   marginTop: "10px",
                   marginBottom: "10px",
                   width: "100%",
+                  color: darkMode.text,
                 }}>
                 The TodoList React library streamlines task management with
                 essential CRUD functions. Adding tasks dynamically updates the
@@ -500,7 +506,7 @@ export default function Portfolio() {
               xs: "column",
               sm: "row",
             },
-            bgcolor: "#FFFFFF",
+            bgcolor: darkMode.color,
             width: "90%",
             marginLeft: "auto",
             marginRight: "auto",
@@ -529,10 +535,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -543,10 +549,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -557,10 +563,10 @@ export default function Portfolio() {
                   variant="contained"
                   color="primary"
                   sx={{
-                    bgcolor: "#FFFFFF",
-                    color: "black",
+                    bgcolor: darkMode.color,
+                    color: darkMode.text,
                     boxShadow: "none",
-                    border: "solid 1px black",
+                    border: `1px solid ${darkMode.text}`,
                     width: "100%",
                     fontSize: "10px",
                     marginBottom: "10px",
@@ -576,6 +582,7 @@ export default function Portfolio() {
                   marginLeft: "10px",
                   marginTop: "10px",
                   marginBottom: "10px",
+                  color: darkMode.text,
                 }}>
                 Starbuck Clone Website
               </Typography>
@@ -588,6 +595,7 @@ export default function Portfolio() {
                   marginTop: "10px",
                   marginBottom: "10px",
                   width: "100%",
+                  color: darkMode.text,
                 }}>
                 Clone Website from Starbucks in Canada, which provide specific
                 information about their menu, products, promotions, and more.

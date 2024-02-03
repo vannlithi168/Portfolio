@@ -10,10 +10,12 @@ import EmailIcon from "@mui/icons-material/Email";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Element, scroller } from "react-scroll";
+import { useDarkMode } from "../DarkModeContext";
 
 export default function ContactMe({ id }) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const { darkMode } = useDarkMode();
 
   const handleSendClick = async () => {
     // Formspree form endpoint
@@ -58,15 +60,16 @@ export default function ContactMe({ id }) {
     <Element name={id} className="element">
       <div
         style={{
-          padding: "20px", // Add padding for better spacing
+          padding: " 20px",
+          backgroundColor: darkMode.color,
         }}>
         <div style={{ marginLeft: "20px" }}>
           <Typography
             variant="h5"
             sx={{
               fontWeight: "bold",
-              color: "#0094FF",
-              marginTop: "10px",
+              color: darkMode.text,
+              marginTop: "0px",
               marginBottom: "30px",
             }}>
             Contact Me
@@ -78,6 +81,7 @@ export default function ContactMe({ id }) {
               gap: "10px",
               fontSize: "20px",
               fontWeight: "bold",
+              color: darkMode.text,
             }}>
             <EmailIcon /> Email: vannlithi@gmail.com
           </Typography>
@@ -89,6 +93,7 @@ export default function ContactMe({ id }) {
               fontSize: "20px",
               fontWeight: "bold",
               margin: "20px 0",
+              color: darkMode.text,
             }}>
             <TelegramIcon /> Telegram: 092988821
           </Typography>
@@ -99,6 +104,7 @@ export default function ContactMe({ id }) {
               gap: "10px",
               fontSize: "20px",
               fontWeight: "bold",
+              color: darkMode.text,
             }}>
             <LinkedInIcon /> Linkedin:
             www.linkedin.com/in/kim-vannlithi-2231b3294
@@ -113,6 +119,7 @@ export default function ContactMe({ id }) {
             marginTop: "20px",
             border: "none",
             boxShadow: "none",
+            bgcolor: darkMode.color,
           }}>
           <Box
             sx={{
@@ -129,6 +136,10 @@ export default function ContactMe({ id }) {
                 fullWidth
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                sx={{
+                  bgcolor: "white",
+                  color: darkMode.text,
+                }}
               />
               <TextField
                 label="Message"
@@ -139,6 +150,10 @@ export default function ContactMe({ id }) {
                 rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                sx={{
+                  bgcolor: "white",
+                  color: darkMode.text,
+                }}
               />
 
               {/* "Send Me" Button */}
@@ -159,7 +174,7 @@ export default function ContactMe({ id }) {
               marginTop: { xs: "-20px", md: "-80px" },
               marginLeft: { xs: 0, md: "20px" },
             }}
-            image="/img/contactme.gif"
+            image="/img/contactme2.gif"
             alt="Live from space album cover"
           />
         </Card>

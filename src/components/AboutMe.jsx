@@ -4,28 +4,31 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Element } from "react-scroll";
+import { useDarkMode } from "../DarkModeContext";
 
-export default function AboutMe({ darkMode }) {
+export default function AboutMe() {
+  const { darkMode } = useDarkMode();
   return (
     <Element name="aboutMe" className="element">
       <Card
         sx={{
           display: "grid",
-          bgcolor: darkMode ? "#333" : "#FFFFFF",
+          bgcolor: darkMode.color,
           gridTemplateColumns: "1fr 1fr",
           alignItems: "center",
           justifyContent: "center",
           "@media (max-width:600px)": {
             gridTemplateColumns: "1fr",
           },
-          margin: "60px 20px",
+          padding: "60px 60px",
           border: "none",
           boxShadow: "none",
+          borderRadius: "0",
         }}>
         <CardMedia
           component="img"
           sx={{ height: "auto" }}
-          image="/img/aboutme.gif"
+          image="/img/profile2.gif"
           alt="Live from space album cover"
         />
         <CardContent
@@ -38,13 +41,21 @@ export default function AboutMe({ darkMode }) {
           }}>
           <Typography
             variant="h5"
-            sx={{ fontWeight: "bold", color: "#0094FF", marginTop: "-50px" }}>
+            sx={{
+              fontWeight: "bold",
+              color: darkMode.text,
+              marginTop: "-50px",
+            }}>
             ABOUT ME
           </Typography>
           <Typography
             variant="subtitle1"
-            color="text.secondary"
-            sx={{ fontSize: "20px", textAlign: "center", marginTop: "20px" }}>
+            sx={{
+              fontSize: "20px",
+              textAlign: "justify",
+              marginTop: "20px",
+              color: darkMode.text,
+            }}>
             I'm Vannlithi KIM, a passionate software enthusiast with hands-on
             experience in various programming languages and technologies. My
             focus on Agile methodology extends to active involvement in sprint

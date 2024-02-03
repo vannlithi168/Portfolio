@@ -1,3 +1,4 @@
+// NavBar.js
 import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
@@ -13,7 +14,6 @@ import Brightness4Icon from "@mui/icons-material/Brightness4"; // Dark mode icon
 import { Link as ScrollLink } from "react-scroll";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import { useState } from "react";
 import { useDarkMode } from "../DarkModeContext";
 
 const drawerWidth = 240;
@@ -21,7 +21,7 @@ const navItems = ["Home", "About", "Projects", "Contact"];
 
 function NavBar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false); // Define mobileOpen state
   const { darkMode, toggleDarkMode } = useDarkMode();
 
   const handleDrawerToggle = () => {
@@ -32,11 +32,22 @@ function NavBar(props) {
     <Box
       onClick={handleDrawerToggle}
       sx={{ textAlign: "center", padding: "20px" }}>
-      <Typography
-        variant="h6"
-        sx={{ my: 2, fontWeight: "bold", color: darkMode ? "white" : "black" }}>
+      <ScrollLink
+        to="home"
+        spy={true}
+        smooth={true}
+        duration={500}
+        offset={-90}
+        style={{
+          my: 2,
+          fontWeight: "bold",
+          bgcolor: darkMode.background,
+          color: darkMode.text,
+          textDecoration: "none",
+        }}>
         k_vannlithi.dev
-      </Typography>
+      </ScrollLink>
+
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -50,7 +61,7 @@ function NavBar(props) {
               onClick={handleDrawerToggle}>
               <Button
                 sx={{
-                  color: darkMode ? "white" : "black",
+                  color: darkMode.text, // Set text color based on dark mode
                   fontWeight: "bold",
                   fontSize: "17px",
                   margin: "10px 0",
@@ -73,7 +84,7 @@ function NavBar(props) {
       <AppBar
         component="nav"
         sx={{
-          bgcolor: darkMode ? "#333" : "#FFFFFF",
+          bgcolor: darkMode.background, // Set background color based on dark mode
           height: { xs: "60px", sm: "80px", md: "87px" },
           justifyContent: "center",
         }}>
@@ -84,7 +95,7 @@ function NavBar(props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}>
-            <MenuIcon sx={{ color: darkMode ? "white" : "black" }} />
+            <MenuIcon sx={{ color: darkMode.text }} />
           </IconButton>
           <Typography
             variant="h6"
@@ -92,7 +103,7 @@ function NavBar(props) {
             sx={{
               flexGrow: 1,
               display: { xs: "none", sm: "block" },
-              color: darkMode ? "white" : "black",
+              color: darkMode.text,
               fontWeight: "bold",
               fontSize: "25px",
               marginLeft: "20px",
@@ -111,7 +122,7 @@ function NavBar(props) {
                 offset={-90}>
                 <Button
                   sx={{
-                    color: darkMode ? "white" : "black",
+                    color: darkMode.text,
                     fontWeight: "bold",
                     fontSize: "17px",
                   }}>
@@ -124,7 +135,7 @@ function NavBar(props) {
             color="inherit"
             aria-label="toggle dark mode"
             onClick={toggleDarkMode}
-            sx={{ marginLeft: "auto", color: darkMode ? "white" : "black" }}>
+            sx={{ marginLeft: "auto", color: darkMode.text }}>
             <Brightness4Icon />
           </IconButton>
         </Toolbar>
@@ -143,7 +154,7 @@ function NavBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              bgcolor: darkMode ? "#333" : "#FFFFFF",
+              bgcolor: darkMode.background, // Set background color based on dark mode
             },
           }}>
           {drawer}
