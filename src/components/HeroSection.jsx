@@ -9,6 +9,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { keyframes } from "@emotion/react";
 import IconButton from "@mui/material/IconButton";
+import { useDarkMode } from "../DarkModeContext";
 
 const morphAnimation = keyframes`
   0% {
@@ -23,6 +24,7 @@ const morphAnimation = keyframes`
 `;
 
 export default function HeroSection() {
+  const { darkMode } = useDarkMode();
   const handleDownload = async () => {
     const cvFileName = "Vannlithi-resume.pdf";
 
@@ -53,12 +55,13 @@ export default function HeroSection() {
         display: "flex",
         alignContent: "center",
         width: "100%",
-        bgcolor: "#F8F8F8",
-        marginTop: { xs: "60px", sm: "40px", md: "90px" },
+        bgcolor: darkMode.background,
+        marginTop: { xs: "60px", sm: "40px", md: "85px" },
         paddingTop: "70px",
         paddingBottom: "50px",
         border: "none",
         boxShadow: "none",
+        borderRadius: "0",
       }}>
       <Container maxWidth="lg">
         <Grid
@@ -78,6 +81,7 @@ export default function HeroSection() {
                 alignItems: { xs: "center", md: "flex-start" },
                 textAlign: { xs: "center", md: "start" },
                 paddingTop: { xs: "40px", md: 0 },
+                color: darkMode.text,
               }}>
               <Typography
                 component="div"
@@ -149,7 +153,7 @@ export default function HeroSection() {
                 backgroundPosition: "50%",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
-                border: "3px solid #2d2e32",
+                border: `3px solid ${darkMode.text}`,
                 borderRadius: "60% 40% 30% 70%/60% 30% 70% 40%",
                 position: "relative",
                 transition: "all 1s ease-in-out",

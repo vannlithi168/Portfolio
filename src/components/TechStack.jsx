@@ -1,6 +1,7 @@
 import { keyframes } from "@emotion/react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
+import { useDarkMode } from "../DarkModeContext";
 
 const scaleInAnimation = keyframes`
   0% {
@@ -18,6 +19,7 @@ const scaleInAnimation = keyframes`
 `;
 
 export default function TechStack() {
+  const { darkMode } = useDarkMode();
   const images = [
     "/img/html.png",
     "/img/css.png",
@@ -31,13 +33,14 @@ export default function TechStack() {
   ];
 
   return (
-    <div style={{ backgroundColor: "#F8F8F8", paddingBottom: "20px" }}>
+    <div style={{ backgroundColor: darkMode.background, padding: "20px 0" }}>
       <h1
         style={{
           textAlign: "center",
           fontWeight: 800,
           marginBottom: "30px",
           marginTop: "0px",
+          color: darkMode.text,
         }}>
         TECH STACKS
       </h1>
@@ -55,7 +58,7 @@ export default function TechStack() {
             boxShadow: "none",
             marginBottom: "50px",
             justifyContent: "center",
-            bgcolor: "#F8F8F8",
+            bgcolor: darkMode.background,
             overflow: "hidden",
             transition: "all 0.5s ease-in-out",
             flexWrap: "wrap", // Allow items to wrap on smaller screens
@@ -68,6 +71,7 @@ export default function TechStack() {
                 width: 100,
                 height: 100,
                 borderRadius: "50%",
+                bgcolor: darkMode.color,
                 animation: `${scaleInAnimation} 3s ease-in-out ${
                   index * 1.5
                 }s infinite`,
