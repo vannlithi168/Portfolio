@@ -20,7 +20,7 @@ export default function AboutMe() {
           "@media (max-width:600px)": {
             gridTemplateColumns: "1fr",
           },
-          padding: "60px 60px",
+          padding: "60px 20px",
           border: "none",
           boxShadow: "none",
           borderRadius: "0",
