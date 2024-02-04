@@ -4,8 +4,8 @@ import React, { createContext, useContext, useState } from "react";
 const DarkModeContext = createContext();
 
 const colorOptions = [
-  { background: "#333", text: "white", color: "#1C1C22" },
   { background: "#F0F2F5", text: "black", color: "#F8F8F8" },
+  { background: "#333", text: "white", color: "#1C1C22" },
 ];
 
 export const DarkModeProvider = ({ children }) => {
