@@ -56,11 +56,17 @@ export default function ContactMe({ id }) {
     }
   };
 
+  const handleTelegramClick = () => {
+    window.open("https://t.me/Lithiik");
+  };
+
+  const linkedinUrl = "https://www.linkedin.com/in/kim-vannlithi-2231b3294";
+
   return (
     <Element name={id} className="element">
       <div
         style={{
-          padding: " 20px",
+          padding: "20px",
           backgroundColor: darkMode.color,
         }}>
         <div style={{ marginLeft: "20px" }}>
@@ -75,6 +81,9 @@ export default function ContactMe({ id }) {
             Contact Me
           </Typography>
           <Typography
+            onClick={() =>
+              (window.location.href = "mailto:vannlithi168@gmail.com")
+            }
             sx={{
               display: "flex",
               alignItems: "center",
@@ -82,10 +91,14 @@ export default function ContactMe({ id }) {
               fontSize: "20px",
               fontWeight: "bold",
               color: darkMode.text,
+              textDecoration: "underline", // Add underline to indicate it's clickable
+              cursor: "pointer", // Change cursor to pointer to indicate it's clickable
             }}>
-            <EmailIcon /> Email: vannlithi@gmail.com
+            <EmailIcon /> Email: vannlithi168@gmail.com
           </Typography>
+
           <Typography
+            onClick={handleTelegramClick}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -94,10 +107,16 @@ export default function ContactMe({ id }) {
               fontWeight: "bold",
               margin: "20px 0",
               color: darkMode.text,
+              textDecoration: "underline",
+              cursor: "pointer", // Add cursor pointer to indicate clickable
             }}>
             <TelegramIcon /> Telegram: 092988821
           </Typography>
           <Typography
+            component="a"
+            href={linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             sx={{
               display: "flex",
               alignItems: "center",
@@ -105,9 +124,10 @@ export default function ContactMe({ id }) {
               fontSize: "20px",
               fontWeight: "bold",
               color: darkMode.text,
+              textDecoration: "underline", // Add underline to indicate it's clickable
+              cursor: "pointer", // Change cursor to pointer to indicate it's clickable
             }}>
-            <LinkedInIcon /> Linkedin:
-            www.linkedin.com/in/kim-vannlithi-2231b3294
+            <LinkedInIcon /> Linkedin: Go to my profile
           </Typography>
         </div>
 
